@@ -53,14 +53,38 @@ public class LaunchBrowser {
 		
 		driver.switchTo().defaultContent();
 		driver.navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		
 		//Verify the INDIA country is visible after clicking on country dropdown
 		driver.findElement(By.xpath("//span[@class='switcherDownArrow appendLeft10']")).click();
 		Thread.sleep(2000);
-		WebElement countryName = driver.findElement(By.name("INDIA"));
-		driver.wait(5000);
-		softAssert.assertEquals(true, false);
+		WebElement countryName = driver.findElement(By.className("selectConInput"));
+		Thread.sleep(1000);
+		softAssert.assertEquals(countryName, "India");
+		
+	    // select delhi city in "FROM" dropdown 
+		driver.findElement(By.id("fromCity")).sendKeys("delhi");
+		driver.findElement(By.xpath("(//div[contains(.,'New Delhi, India Indira Gandhi International Airport')])[17]")).click();
+	    // select mumbai city in "TO" dropdown
+		driver.findElement(By.id("toCity")).sendKeys("mumbai");
+		driver.findElement(By.xpath("//p[contains(.,'Mumbai, India')]")).click();
+	    // select departure dates from the calender
+		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//span[@class='lbl_input appendBottom10']")).click();
+//		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//*[@aria-label='Wed Sep 20 2023']")).click();
+		
+		driver.findElement(By.id("react-autowhatever-1-section-0-item-0")).click();
+	        Thread.sleep(2000);
+	        driver.findElement(By.xpath("//*[@aria-label='Wed Sep 20 2023']")).click();
+		
+		// select return dates from the calender
+		driver.findElement(By.xpath("//div[contains(@data-cy,'returnArea')]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//div[contains(@aria-label,'Sun Sep 24 2023')]")).click();
+		Thread.sleep(4000);
+	    // click on search button 
+		
 		}
 		finally {
 				driver.quit();
