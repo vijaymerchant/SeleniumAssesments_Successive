@@ -1,5 +1,5 @@
 # SeleniumAssesments_Successive
-Selenium assessments given by successive 
+Selenium assessments are given by successive 
 ------------------------------------------------
 
 Use this site URL to write the script - https://www.makemytrip.com/
